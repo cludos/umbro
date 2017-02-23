@@ -23,30 +23,30 @@ public class GridMoveK : MonoBehaviour {
         if (Input.GetKeyDown(KeyCode.RightArrow) && tr.position == pos && bds.KidCanMove(x+1, y))
         {
             pos += Vector3.right;
-            board.GetComponent<Board>().SetOccupied("empty", x, y);
+            board.GetComponent<Board>().SetBlocking(false, x, y);
             x += 1;
-            board.GetComponent<Board>().SetOccupied("kid", x, y);
+            board.GetComponent<Board>().SetBlocking(true, x, y);
         }
         else if (Input.GetKeyDown(KeyCode.LeftArrow) && tr.position == pos && bds.KidCanMove(x - 1, y))
         {
             pos += Vector3.left;
-            board.GetComponent<Board>().SetOccupied("empty", x, y);
+            board.GetComponent<Board>().SetBlocking(false, x, y);
             x -= 1;
-            board.GetComponent<Board>().SetOccupied("kid", x, y);
+            board.GetComponent<Board>().SetBlocking(true, x, y);
         }
         else if (Input.GetKeyDown(KeyCode.UpArrow) && tr.position == pos && bds.KidCanMove(x, y+1))
         {
             pos += Vector3.forward;
-            board.GetComponent<Board>().SetOccupied("empty", x, y);
+            board.GetComponent<Board>().SetBlocking(false, x, y);
             y += 1;
-            board.GetComponent<Board>().SetOccupied("kid", x, y);
+            board.GetComponent<Board>().SetBlocking(true, x, y);
         }
         else if (Input.GetKeyDown(KeyCode.DownArrow) && tr.position == pos && bds.KidCanMove(x, y-1))
         {
             pos += Vector3.back;
-            board.GetComponent<Board>().SetOccupied("empty", x, y);
+            board.GetComponent<Board>().SetBlocking(false, x, y);
             y -= 1;
-            board.GetComponent<Board>().SetOccupied("kid", x, y);
+            board.GetComponent<Board>().SetBlocking(true, x, y);
         }
 
         transform.position = Vector3.MoveTowards(transform.position, pos, Time.deltaTime * speed);
