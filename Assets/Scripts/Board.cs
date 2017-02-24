@@ -22,6 +22,10 @@ public class Entity : MonoBehaviour {
     }
 }
 
+public class Exit : Entity {
+    public Exit(Board board, int x, int y) : base(board, x, y) {}
+}
+
 public class Rug : Entity {
     public Rug(Board board, int x, int y) : base(board, x, y) {
         blocksBlocks = true;
@@ -67,6 +71,16 @@ public class Monster : Moveable {
 
     public new bool CanMove(int nx, int ny) {
         return base.CanMove(nx, ny) && !board.BlocksPlayers(nx, ny) && !board.board[nx,ny].light;
+    }
+
+    public new bool Move(int nx, int ny) {
+        if (base.Move(nx, ny)) {
+            if (board.IsExit(nx, ny)) {
+                board.CompleteLevel();
+            }
+            return true;
+        }
+        return false;
     }
 }
 
@@ -157,6 +171,19 @@ public class Board : MonoBehaviour {
             }
         }
         return maxHeight;
+    }
+
+    public bool IsExit(int x, int y) {
+        foreach (Entity e in board[x,y].entities) {
+            if (e is Exit) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    public void CompleteLevel() {
+        Debug.Log("A winner is you!");
     }
 
     public bool InRange(int x, int y) {
