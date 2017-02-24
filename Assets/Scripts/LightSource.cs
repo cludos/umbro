@@ -18,6 +18,7 @@ public class simpleRay : Ray {
 }
 
 public class LightSource : MonoBehaviour {
+    public bool isOn;
     private Board board;
 
 	// Use this for initialization
@@ -27,12 +28,21 @@ public class LightSource : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		Ray ray = getPath();
-		while (ray.hasNextLight()) {
-			Vector2 lightLocation = ray.nextLight();
-		    board.SetLight(true, (int)lightLocation.x, (int)lightLocation.y);
-		}
-	}
+        if (isOn)
+        {
+            Ray ray = getPath();
+            while (ray.hasNextLight())
+            {
+                Vector2 lightLocation = ray.nextLight();
+                board.SetLight(true, (int)lightLocation.x, (int)lightLocation.y);
+            }
+        }
+    }
+
+    public void setPower(bool power)
+    {
+        isOn = power;
+    }
 
 	public Ray getPath() {
 		return new simpleRay();
