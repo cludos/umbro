@@ -74,6 +74,8 @@ public class Board : MonoBehaviour {
     public Cell[,] board;
     public int width;
     public int height;
+    public Monster monster;
+    public Kid kid;
 
     /// <summary>
     /// Singleton
@@ -100,8 +102,8 @@ public class Board : MonoBehaviour {
         new Block(this, 0, 1, 2);
         new Block(this, 1, 1, 2);
 
-        new Monster(this, 1, 2);
-        new Kid (this, 2, 3);
+        monster = new Monster(this, 1, 2);
+        kid = new Kid (this, 2, 3);
         for (int i = 0; i<2; i++)
         {
             for (int j = 1; j<4; j++)
