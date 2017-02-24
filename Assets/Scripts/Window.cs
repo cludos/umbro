@@ -18,9 +18,16 @@ public class windowRay : Ray {
 
 	public Vector2 nextLight () {
 		int height = Board.Instance.GetHeight((int)pos.x, (int)pos.y);
-		range -= (height+1);
-		pos += dir * (height+1);
-		return pos;
+
+        while (height > 0)
+        {
+            range--;
+            pos += dir;
+            height = Mathf.Max(Board.Instance.GetHeight((int)pos.x, (int)pos.y), height);
+            height--;
+
+        }
+        return pos;
 	}
 }
 
