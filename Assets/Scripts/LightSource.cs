@@ -25,9 +25,10 @@ public class LightSource : MonoBehaviour {
 	void Start () {
 		board = Board.Instance;
 	}
-	
-	// Update is called once per frame
-	void Update () {
+
+    // Update is called once per frame
+    // This may be better off only being called after board updates
+    void Update () {
         if (isOn)
         {
             Ray ray = getPath();
@@ -44,7 +45,7 @@ public class LightSource : MonoBehaviour {
         isOn = power;
     }
 
-	public Ray getPath() {
+	public virtual Ray getPath() {
 		return new simpleRay();
 	}
 }

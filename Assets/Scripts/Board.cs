@@ -110,24 +110,10 @@ public class Board : MonoBehaviour {
         board = new Cell[width, height];
         for (int i = 0; i< width; i++) {
             for(int j = 0; j< height; j++) {
-                board[i, j].light = true;
+                board[i, j].light = false;
                 board[i, j].entities = new List<Entity>();
             }
         }
-
-        new Block(this, 0, 1, 2);
-        new Block(this, 1, 1, 2);
-
-        monster = new Monster(this, 1, 2);
-        kid = new Kid (this, 2, 3);
-        for (int i = 0; i<2; i++)
-        {
-            for (int j = 1; j<4; j++)
-            {
-                board[i, j].light = false;
-            }
-        }
-
     }
 
     // Update is called once per frame
@@ -161,7 +147,7 @@ public class Board : MonoBehaviour {
         return board[x,y].light;
     }
 
-    public void SetLight(bool light, int x, int y) {
+    public void SetLight(bool light, int x, int y) {    
         if (!InRange(x,y)) return;
         board[x,y].light = light;
     }

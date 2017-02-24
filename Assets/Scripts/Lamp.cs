@@ -53,7 +53,7 @@ public class lampRay : Ray
 
 public class Lamp : LightSource
 {
-    public new Ray getPath()
+    public override Ray getPath()
     {
         return new lampRay(transform.position);
     }

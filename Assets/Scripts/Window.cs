@@ -27,6 +27,9 @@ public class windowRay : Ray {
             height--;
 
         }
+        range--;
+        pos += dir;
+
         return pos;
 	}
 }
@@ -36,8 +39,7 @@ public class Window : LightSource {
 	public int range;
 	public Vector2 dir;
 
-
-	public new Ray getPath() {
+	public override Ray getPath() {
 		return new windowRay(range, dir, transform.position);
 	}
 }

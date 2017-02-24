@@ -5,8 +5,6 @@ public class GridMove : MonoBehaviour {
     public float speed = 2.0f;
     private Vector3 pos;
     private Transform tr;
-    public bool useWASD;
-    private Board board;
     private KeyCode up;
     private KeyCode right;
     private KeyCode left;
@@ -18,17 +16,20 @@ public class GridMove : MonoBehaviour {
     void Start () {
         pos = transform.position;
         tr = transform;
-        board = Board.Instance;
-        if (useWASD)
+    }
+
+    public void SetMe(Moveable me, bool isKid)
+    {
+        this.me = me;
+        if (!isKid)
         {
-            me = board.monster;
             up = KeyCode.W;
             left = KeyCode.A;
             down = KeyCode.S;
             right = KeyCode.D;
-        } else
+        }
+        else
         {
-            me = board.kid;
             up = KeyCode.UpArrow;
             left = KeyCode.LeftArrow;
             down = KeyCode.DownArrow;
@@ -36,9 +37,9 @@ public class GridMove : MonoBehaviour {
         }
     }
 
-    // Update is called once per frame
-    void Update () {
-
+ 
+    public void Move () {
+        if (me == null) return;
         if (Input.GetKeyDown(right) && tr.position == pos && me.Move(me.x + 1, me.y))
         {
             pos += Vector3.right;
@@ -46,7 +47,6 @@ public class GridMove : MonoBehaviour {
         else if (Input.GetKeyDown(left) && tr.position == pos && me.Move(me.x - 1, me.y))
         {
             pos += Vector3.left;
-
         }
         else if (Input.GetKeyDown(up) && tr.position == pos && me.Move(me.x, me.y + 1))
         {
