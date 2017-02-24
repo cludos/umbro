@@ -6,11 +6,10 @@ public class ObjectMove : MonoBehaviour {
     public int height = 2;
     private Vector3 pos;
     private Transform tr;
-    public GameObject board;
     public GameObject monster;
     public int x;
     public int y;
-    private Board bds;
+    private Board board;
     private GridMove mn;
     bool shift;
 
@@ -19,7 +18,7 @@ public class ObjectMove : MonoBehaviour {
     {
         pos = transform.position;
         tr = transform;
-        bds = board.GetComponent<Board>();
+        board = Board.Instance;
         mn = monster.GetComponent<GridMove>();
     }
 
@@ -36,65 +35,65 @@ public class ObjectMove : MonoBehaviour {
         }
         if (shift)
         {
-            if (Input.GetKeyDown(KeyCode.D) && tr.position == pos && bds.ObjectCanMove(x + 1, y) && mn.y == y && (mn.x == x - 1 || mn.x == x + 1))
+            if (Input.GetKeyDown(KeyCode.D) && tr.position == pos && board.ObjectCanMove(x + 1, y) && mn.y == y && (mn.x == x - 1 || mn.x == x + 1))
             {
                 pos += Vector3.right;
-                bds.SetHeight(0, x, y);
-                bds.SetLight(true, x, y + 2);
-                bds.SetLight(true, x, y + 1);
-                bds.SetLight(true, x, y);
+                board.SetHeight(0, x, y);
+                board.SetLight(true, x, y + 2);
+                board.SetLight(true, x, y + 1);
+                board.SetLight(true, x, y);
 
                 x += 1;
-                bds.SetHeight(height, x, y);
-                bds.SetLight(false, x, y + 2);
-                bds.SetLight(false, x, y + 1);
-                bds.SetLight(false, x, y);
+                board.SetHeight(height, x, y);
+                board.SetLight(false, x, y + 2);
+                board.SetLight(false, x, y + 1);
+                board.SetLight(false, x, y);
 
             }
-            else if (Input.GetKeyDown(KeyCode.A) && tr.position == pos && bds.ObjectCanMove(x - 1, y) && mn.y == y && (mn.x == x - 1 || mn.x == x + 1))
+            else if (Input.GetKeyDown(KeyCode.A) && tr.position == pos && board.ObjectCanMove(x - 1, y) && mn.y == y && (mn.x == x - 1 || mn.x == x + 1))
             {
-                bds.SetLight(true, x, y + 2);
-                bds.SetLight(true, x, y + 1);
-                bds.SetLight(true, x, y);
+                board.SetLight(true, x, y + 2);
+                board.SetLight(true, x, y + 1);
+                board.SetLight(true, x, y);
 
                 pos += Vector3.left;
-                bds.SetHeight(0, x, y);
+                board.SetHeight(0, x, y);
                 x -= 1;
-                bds.SetHeight(height, x, y);
-                bds.SetLight(false, x, y + 2);
-                bds.SetLight(false, x, y + 1);
-                bds.SetLight(false, x, y);
+                board.SetHeight(height, x, y);
+                board.SetLight(false, x, y + 2);
+                board.SetLight(false, x, y + 1);
+                board.SetLight(false, x, y);
 
             }
-            else if (Input.GetKeyDown(KeyCode.W) && tr.position == pos && bds.ObjectCanMove(x, y + 1) && mn.x == x && (mn.y == y - 1 || mn.y == y + 1))
+            else if (Input.GetKeyDown(KeyCode.W) && tr.position == pos && board.ObjectCanMove(x, y + 1) && mn.x == x && (mn.y == y - 1 || mn.y == y + 1))
             {
-                bds.SetLight(true, x, y + 2);
-                bds.SetLight(true, x, y + 1);
-                bds.SetLight(true, x, y);
+                board.SetLight(true, x, y + 2);
+                board.SetLight(true, x, y + 1);
+                board.SetLight(true, x, y);
 
                 pos += Vector3.forward;
-                bds.SetHeight(0, x, y);
+                board.SetHeight(0, x, y);
                 y += 1;
-                bds.SetHeight(height, x, y);
-                bds.SetLight(false, x, y + 2);
-                bds.SetLight(false, x, y + 1);
-                bds.SetLight(false, x, y);
+                board.SetHeight(height, x, y);
+                board.SetLight(false, x, y + 2);
+                board.SetLight(false, x, y + 1);
+                board.SetLight(false, x, y);
 
             }
-            else if (Input.GetKeyDown(KeyCode.S) && tr.position == pos && bds.ObjectCanMove(x, y - 1) && mn.x == x && (mn.y == y - 1 || mn.y == y + 1))
+            else if (Input.GetKeyDown(KeyCode.S) && tr.position == pos && board.ObjectCanMove(x, y - 1) && mn.x == x && (mn.y == y - 1 || mn.y == y + 1))
             {
                 Debug.Log("down");
-                bds.SetLight(true, x, y + 2);
-                bds.SetLight(true, x, y + 1);
-                bds.SetLight(true, x, y);
+                board.SetLight(true, x, y + 2);
+                board.SetLight(true, x, y + 1);
+                board.SetLight(true, x, y);
 
                 pos += Vector3.back;
-                bds.SetHeight(0, x, y);
+                board.SetHeight(0, x, y);
                 y -= 1;
-                bds.SetHeight(height, x, y);
-                bds.SetLight(false, x, y + 2);
-                bds.SetLight(false, x, y + 1);
-                bds.SetLight(false, x, y);
+                board.SetHeight(height, x, y);
+                board.SetLight(false, x, y + 2);
+                board.SetLight(false, x, y + 1);
+                board.SetLight(false, x, y);
 
             }
         }

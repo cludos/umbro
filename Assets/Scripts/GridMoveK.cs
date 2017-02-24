@@ -5,48 +5,47 @@ public class GridMoveK : MonoBehaviour {
     public float speed = 2.0f;
     private Vector3 pos;
     private Transform tr;
-    public GameObject board;
     public int x;
     public int y;
-    private Board bds;
+    private Board board;
 
 
     // Use this for initialization
     void Start () {
         pos = transform.position;
         tr = transform;
-        bds = board.GetComponent<Board>();
+        board = Board.Instance;
     }
 
     // Update is called once per frame
     void Update () {
-        if (Input.GetKeyDown(KeyCode.RightArrow) && tr.position == pos && bds.KidCanMove(x+1, y))
+        if (Input.GetKeyDown(KeyCode.RightArrow) && tr.position == pos && board.KidCanMove(x+1, y))
         {
             pos += Vector3.right;
-            board.GetComponent<Board>().SetBlocking(false, x, y);
+            board.SetBlocking(false, x, y);
             x += 1;
-            board.GetComponent<Board>().SetBlocking(true, x, y);
+            board.SetBlocking(true, x, y);
         }
-        else if (Input.GetKeyDown(KeyCode.LeftArrow) && tr.position == pos && bds.KidCanMove(x - 1, y))
+        else if (Input.GetKeyDown(KeyCode.LeftArrow) && tr.position == pos && board.KidCanMove(x - 1, y))
         {
             pos += Vector3.left;
-            board.GetComponent<Board>().SetBlocking(false, x, y);
+            board.SetBlocking(false, x, y);
             x -= 1;
-            board.GetComponent<Board>().SetBlocking(true, x, y);
+            board.SetBlocking(true, x, y);
         }
-        else if (Input.GetKeyDown(KeyCode.UpArrow) && tr.position == pos && bds.KidCanMove(x, y+1))
+        else if (Input.GetKeyDown(KeyCode.UpArrow) && tr.position == pos && board.KidCanMove(x, y+1))
         {
             pos += Vector3.forward;
-            board.GetComponent<Board>().SetBlocking(false, x, y);
+            board.SetBlocking(false, x, y);
             y += 1;
-            board.GetComponent<Board>().SetBlocking(true, x, y);
+            board.SetBlocking(true, x, y);
         }
-        else if (Input.GetKeyDown(KeyCode.DownArrow) && tr.position == pos && bds.KidCanMove(x, y-1))
+        else if (Input.GetKeyDown(KeyCode.DownArrow) && tr.position == pos && board.KidCanMove(x, y-1))
         {
             pos += Vector3.back;
-            board.GetComponent<Board>().SetBlocking(false, x, y);
+            board.SetBlocking(false, x, y);
             y -= 1;
-            board.GetComponent<Board>().SetBlocking(true, x, y);
+            board.SetBlocking(true, x, y);
         }
 
         transform.position = Vector3.MoveTowards(transform.position, pos, Time.deltaTime * speed);

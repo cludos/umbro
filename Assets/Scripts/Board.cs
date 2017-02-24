@@ -12,6 +12,21 @@ public class Board : MonoBehaviour {
     public Cell[,] board;
     public int boardx;
     public int boardy;
+
+    /// <summary>
+    /// Singleton
+    /// </summary>
+    public static Board Instance;
+
+    void Awake () {
+        // Register the singleton
+        if (Instance != null) {
+          Debug.LogError("Multiple instances of Board!");
+        }
+        Instance = this;
+    }
+
+
     void Start () {
         board = new Cell[boardx, boardy];
         for (int i = 0; i< boardx; i++)
@@ -44,33 +59,42 @@ public class Board : MonoBehaviour {
 
     }
 
-    public bool MonsterCanMove(int x, int y)
-    {
+    public bool MonsterCanMove(int x, int y) {
+        if (!inRange(x,y)) return false;
         return !board[x, y].light && board[x, y].height == 0;
     }
 
-    public bool KidCanMove(int x, int y)
-    {
+    public bool KidCanMove(int x, int y) {
+        if (!inRange(x,y)) return false;
         return board[x, y].height == 0;
     }
 
-    public bool ObjectCanMove(int x, int y)
-    {
+    public bool ObjectCanMove(int x, int y) {
+        if (!inRange(x,y)) return false;
         return board[x, y].height == 0 && !board[x, y].blocksObjects;
     }
 
-    public void SetLight(bool light, int x, int y)
-    {
+    public void SetLight(bool light, int x, int y) {
+        if (!inRange(x,y)) return;
         board[x, y].light = light;
     }
 
-    public void SetHeight(int height, int x, int y)
-    {
+    public void SetHeight(int height, int x, int y) {
+        if (!inRange(x,y)) return;
         board[x, y].height = height;
     }
 
-    public void SetBlocking(bool blocking, int x, int y)
-    {
+    public void SetBlocking(bool blocking, int x, int y) {
+        if (!inRange(x,y)) return;
         board [x, y].blocksObjects = blocking;
+    }
+
+    public int GetHeight(int x, int y) {
+        if (!inRange(x,y)) return 0;
+        return board [x, y].height;
+    }
+
+    private bool inRange(int x, int y) {
+        return 0 <= x && boardx > x && 0 <= y && boardy > y;
     }
 }
