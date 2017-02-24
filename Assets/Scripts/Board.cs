@@ -7,7 +7,7 @@ public struct Cell {
     public List<Entity> entities;
 }
 
-public class Entity : MonoBehaviour {
+public class Entity {
     public int x, y;
     public int height = 0;
     public bool blocksPlayers = false;
@@ -35,6 +35,7 @@ public class Rug : Entity {
 public class Block : Entity {
     public Block(Board board, int x, int y, int height) : base(board, x, y) {
         this.height = height;
+        blocksPlayers = true;
     }
 }
 
@@ -106,6 +107,7 @@ public class Board : MonoBehaviour {
 
 
     void Start () {
+        board = new Cell[width, height];
         for (int i = 0; i< width; i++) {
             for(int j = 0; j< height; j++) {
                 board[i, j].light = true;
@@ -134,6 +136,7 @@ public class Board : MonoBehaviour {
     }
 
     public bool BlocksPlayers(int x, int y) {
+        if (!InRange(x, y)) return true;
         foreach (Entity e in board[x,y].entities) {
             if (e.blocksPlayers) {
                 return true;
@@ -143,6 +146,7 @@ public class Board : MonoBehaviour {
     }
 
     public bool BlocksBlocks(int x, int y) {
+        if (!InRange(x, y)) return true;
         foreach (Entity e in board[x,y].entities) {
             if (e.blocksBlocks) {
                 return true;
