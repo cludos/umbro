@@ -44,11 +44,11 @@ public class Moveable : Entity {
         blocksBlocks = true;
     }
 
-    public bool CanMove(int nx, int ny) {
+    public virtual bool CanMove(int nx, int ny) {
         return board.InRange(nx, ny);
     }
 
-    public bool Move(int nx, int ny) {
+    public virtual bool Move(int nx, int ny) {
         if (!CanMove(nx, ny)) return false;
         board.board[x,y].entities.Remove(this);
         x = nx;
@@ -61,7 +61,7 @@ public class Moveable : Entity {
 public class Kid : Moveable {
     public Kid(Board board, int x, int y) : base(board, x, y) {}
 
-    public new bool CanMove(int nx, int ny) {
+    public override bool CanMove(int nx, int ny) {
         return base.CanMove(nx, ny) && !board.BlocksPlayers(nx, ny);
     }
 }
@@ -69,11 +69,11 @@ public class Kid : Moveable {
 public class Monster : Moveable {
     public Monster(Board board, int x, int y) : base(board, x, y) {}
 
-    public new bool CanMove(int nx, int ny) {
+    public override bool CanMove(int nx, int ny) {
         return base.CanMove(nx, ny) && !board.BlocksPlayers(nx, ny) && !board.board[nx,ny].light;
     }
 
-    public new bool Move(int nx, int ny) {
+    public override bool Move(int nx, int ny) {
         if (base.Move(nx, ny)) {
             if (board.IsExit(nx, ny)) {
                 board.CompleteLevel();
