@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using System.Collections.Generic;
 
 public struct Cell {
     public bool light;
@@ -11,7 +12,7 @@ public class Entity : MonoBehaviour {
     public int height = 0;
     public bool blocksPlayers = false;
     public bool blocksBlocks = false;
-    Board board;
+    public Board board;
 
     public Entity(Board board, int x, int y) {
         this.board = board;
@@ -44,7 +45,7 @@ public class Moveable : Entity {
     }
 
     public bool Move(int nx, int ny) {
-        if (!canMove(nx, ny)) return false;
+        if (!CanMove(nx, ny)) return false;
         board.board[x,y].entities.Remove(this);
         x = nx;
         y = ny;
@@ -54,14 +55,18 @@ public class Moveable : Entity {
 }
 
 public class Kid : Moveable {
-    public bool CanMove(int nx, int ny) {
-        return base(nx, ny) && !board.BlocksPlayers(nx, ny);
+    public Kid(Board board, int x, int y) : base(board, x, y) {}
+
+    public new bool CanMove(int nx, int ny) {
+        return base.CanMove(nx, ny) && !board.BlocksPlayers(nx, ny);
     }
 }
 
-public class Kid : Moveable {
-    public bool CanMove(int nx, int ny) {
-        return base(nx, ny) && !board.BlocksPlayers(nx, ny) && !board.board[nx,ny].light;
+public class Monster : Moveable {
+    public Monster(Board board, int x, int y) : base(board, x, y) {}
+
+    public new bool CanMove(int nx, int ny) {
+        return base.CanMove(nx, ny) && !board.BlocksPlayers(nx, ny) && !board.board[nx,ny].light;
     }
 }
 
@@ -85,11 +90,10 @@ public class Board : MonoBehaviour {
 
 
     void Start () {
-        board = new Entity[width, height];
         for (int i = 0; i< width; i++) {
             for(int j = 0; j< height; j++) {
                 board[i, j].light = true;
-                board[i, j].entities = new List<>();
+                board[i, j].entities = new List<Entity>();
             }
         }
 
@@ -131,42 +135,29 @@ public class Board : MonoBehaviour {
         return false;
     }
 
-    public bool MonsterCanMove(int x, int y) {
-        if (!inRange(x,y)) return false;
-        return !board[x, y].light && board[x, y].height == 0;
-    }
-
-    public bool KidCanMove(int x, int y) {
-        if (!inRange(x,y)) return false;
-        return board[x, y].height == 0;
-    }
-
-    public bool ObjectCanMove(int x, int y) {
-        if (!inRange(x,y)) return false;
-        return board[x, y].height == 0 && !board[x, y].blocksObjects;
+    public bool GetLight(int x, int y) {
+        if (!InRange (x, y))
+            return false;
+        return board[x,y].light;
     }
 
     public void SetLight(bool light, int x, int y) {
-        if (!inRange(x,y)) return;
-        board[x, y].light = light;
-    }
-
-    public void SetHeight(int height, int x, int y) {
-        if (!inRange(x,y)) return;
-        board[x, y].height = height;
-    }
-
-    public void SetBlocking(bool blocking, int x, int y) {
-        if (!inRange(x,y)) return;
-        board [x, y].blocksObjects = blocking;
+        if (!InRange(x,y)) return;
+        board[x,y].light = light;
     }
 
     public int GetHeight(int x, int y) {
-        if (!inRange(x,y)) return 0;
-        return board [x, y].height;
+        if (!InRange(x,y)) return 0;
+        int maxHeight = 0;
+        foreach (Entity e in board[x,y].entities) {
+            if (e.height > maxHeight) {
+                maxHeight = e.height;
+            }
+        }
+        return maxHeight;
     }
 
-    public bool inRange(int x, int y) {
+    public bool InRange(int x, int y) {
         return 0 <= x && width > x && 0 <= y && height > y;
     }
 }
