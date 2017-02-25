@@ -9,7 +9,7 @@ public class windowRay : Ray {
 
 	public windowRay(int range, Vector2 dir, Vector2 pos) {
 		this.dir = dir;
-		this.pos = pos;
+		this.pos = pos - dir;
 	}
 
 	public bool hasNextLight() {

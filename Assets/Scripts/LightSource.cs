@@ -24,13 +24,16 @@ public class LightSource : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
 		board = Board.Instance;
+        board.AddLightSource(this);
 	}
 
     // Update is called once per frame
     // This may be better off only being called after board updates
     void Update () {
-        if (isOn)
-        {
+    }
+
+    public void UpdateLights() {
+        if (isOn) {
             Ray ray = getPath();
             while (ray.hasNextLight())
             {

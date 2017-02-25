@@ -91,6 +91,7 @@ public class Board : MonoBehaviour {
     public int height;
     public Monster monster;
     public Kid kid;
+    private List<LightSource> lights;
 
     /// <summary>
     /// Singleton
@@ -108,6 +109,7 @@ public class Board : MonoBehaviour {
 
     void Start () {
         board = new Cell[width, height];
+        lights = new List<LightSource>();
         for (int i = 0; i< width; i++) {
             for(int j = 0; j< height; j++) {
                 board[i, j].light = false;
@@ -170,6 +172,20 @@ public class Board : MonoBehaviour {
             }
         }
         return false;
+    }
+
+    public void AddLightSource(LightSource ls)
+    {
+        lights.Add(ls);
+        triggerLightSources();
+    }
+
+    public void triggerLightSources()
+    {
+        foreach(LightSource ls in lights)
+        {
+            ls.UpdateLights();
+        }
     }
 
     public void CompleteLevel() {
