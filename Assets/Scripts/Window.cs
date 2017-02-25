@@ -40,6 +40,6 @@ public class Window : LightSource {
 	public Vector2 dir;
 
 	public override Ray getPath() {
-		return new windowRay(range, dir, transform.position);
+		return new windowRay(range, dir, new Vector2(x,y));
 	}
 }

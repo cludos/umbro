@@ -18,4 +18,15 @@ public class KidScript : MonoBehaviour {
     {
         gm.Move();
     }
+
+    public int getX()
+    {
+        return me.x;
+    }
+
+    public int getY()
+    {
+        return me.y;
+    }
+
 }

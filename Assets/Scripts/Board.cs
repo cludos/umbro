@@ -38,6 +38,26 @@ public class Rug : Entity
     }
 }
 
+public class Switch : Entity
+{
+    private List<LightSource> lights;
+
+    public Switch(Board board, int x, int y, List<LightSource> lights) : base(board, x, y)
+    {
+        blocksBlocks = true;
+        this.lights = lights;
+    }
+
+    public void toggleLights()
+    {
+        foreach (LightSource ls in lights)
+        {
+            ls.setPower(!ls.isOn);
+        }
+        Board.Instance.triggerLightSources();
+    }
+}
+
 public class Moveable : Entity
 {
     public Moveable(Board board, int x, int y) : base(board, x, y)

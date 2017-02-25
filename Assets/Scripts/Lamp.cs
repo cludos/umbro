@@ -55,6 +55,6 @@ public class Lamp : LightSource
 {
     public override Ray getPath()
     {
-        return new lampRay(transform.position);
+        return new lampRay(new Vector2(x, y));
     }
 }

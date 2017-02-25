@@ -18,6 +18,9 @@ public class simpleRay : Ray {
 }
 
 public class LightSource : MonoBehaviour {
+    public int x;
+    public int y;
+
     public bool isOn;
     private Board board;
 
