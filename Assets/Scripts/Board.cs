@@ -171,7 +171,7 @@ public class Monster : Moveable
 
 public class Board : MonoBehaviour
 {
-    public GameObject[] tiles;
+    //public GameObject[] tiles;
     public Cell[,] board;
     public int width;
     public int height;
@@ -251,7 +251,7 @@ public class Board : MonoBehaviour
     public void SetLight(bool light, int x, int y)
     {
         if (!InRange(x, y)) return;
-        tiles[x * height + y].GetComponent<Tile>().SetLight(light);
+        //tiles[x * height + y].GetComponent<Tile>().SetLight(light);
         board[x, y].light = light;
     }
 

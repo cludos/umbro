@@ -1,30 +1,5 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!114 &-749706172
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9e297cb3906fa462bb85ead942063ad9, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  lit: {fileID: 2100000, guid: 5a05062a7de74411c962e13230e3c806, type: 2}
-  unlit: {fileID: 2100000, guid: 01895e5c16b17a54daa7b89b83ab42d4, type: 2}
---- !u!4 &429668
-Transform:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1974646168}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 8
 --- !u!1001 &100100000
 Prefab:
   m_ObjectHideFlags: 1
@@ -34,25 +9,26 @@ Prefab:
     m_Modifications: []
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
-  m_RootGameObject: {fileID: 0}
+  m_RootGameObject: {fileID: 1140616439444888}
   m_IsPrefabParent: 1
---- !u!1 &1974646168
+--- !u!1 &1140616439444888
 GameObject:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  serializedVersion: 4
+  serializedVersion: 5
   m_Component:
-  - 4: {fileID: 429668}
+  - component: {fileID: 4897608442276426}
+  - component: {fileID: 33990902482388186}
+  - component: {fileID: 64062447520589584}
+  - component: {fileID: 23505655771252872}
+  - component: {fileID: 114590817629267012}
   m_Layer: 0
   m_Name: Tile
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-<<<<<<< HEAD
-  m_IsActive: 0
-=======
   m_IsActive: 1
 --- !u!4 &4897608442276426
 Transform:
@@ -132,4 +108,3 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   lit: {fileID: 2100000, guid: 10cf437de3ecb4bd8883c8163291ce61, type: 2}
   unlit: {fileID: 2100000, guid: 01895e5c16b17a54daa7b89b83ab42d4, type: 2}
->>>>>>> 9baac513e80664487f32dfa6ad2247c8086327b9

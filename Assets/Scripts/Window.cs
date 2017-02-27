@@ -39,7 +39,16 @@ public class Window : LightSource {
 	public int range;
 	public Vector2 dir;
 
+
+
 	public override Ray getPath() {
 		return new windowRay(range, dir, new Vector2(x,y));
 	}
+
+    public override void setPower(bool power)
+    {
+        base.setPower(power);
+        MeshRenderer mesh = GetComponent<MeshRenderer>();
+        mesh.enabled = power;
+    }
 }

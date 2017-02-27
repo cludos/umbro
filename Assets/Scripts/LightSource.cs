@@ -46,7 +46,7 @@ public class LightSource : MonoBehaviour {
         }
     }
 
-    public void setPower(bool power)
+    public virtual void setPower(bool power)
     {
         isOn = power;
     }
