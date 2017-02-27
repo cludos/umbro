@@ -85,8 +85,6 @@ public class Moveable : Entity
 
 public class Block : Moveable
 {
-    public int nextScene = 2;
-
     public Block(Board board, int x, int y, int height) : base(board, x, y)
     {
         this.height = height;
@@ -174,6 +172,7 @@ public class Monster : Moveable
 
 public class Board : MonoBehaviour
 {
+    public int nextScene = 2;
     public GameObject[] tiles;
     public Cell[,] board;
     public int width;
