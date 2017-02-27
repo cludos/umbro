@@ -307,6 +307,13 @@ public class Board : MonoBehaviour
 
     public void CompleteLevel()
     {
+        PlayerPrefs.SetString("endtext", "You did it! Woo!");
+        SceneManager.LoadScene(nextScene);
+    }
+
+    public void LoseLevel()
+    {
+        PlayerPrefs.SetString("endtext", "You failed. RIP Umbro.");
         SceneManager.LoadScene(nextScene);
     }
 
