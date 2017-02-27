@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using UnityEngine.SceneManagement;
 using System.Collections;
 using System.Collections.Generic;
 
@@ -171,6 +172,7 @@ public class Monster : Moveable
 
 public class Board : MonoBehaviour
 {
+    public int nextScene = 2;
     //public GameObject[] tiles;
     public Cell[,] board;
     public int width;
@@ -305,7 +307,7 @@ public class Board : MonoBehaviour
 
     public void CompleteLevel()
     {
-        Debug.Log("A winner is you!");
+        SceneManager.LoadScene(nextScene);
     }
 
     public bool InRange(int x, int y)
