@@ -26,8 +26,8 @@ public class LightSource : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-		board = Board.Instance;
-        board.AddLightSource(this);
+            board = Board.Instance;
+            board.AddLightSource(this);
 	}
 
     // Update is called once per frame
