@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using UnityEngine.SceneManagement;
 using System.Collections;
 using System.Collections.Generic;
 
@@ -84,6 +85,8 @@ public class Moveable : Entity
 
 public class Block : Moveable
 {
+    public int nextScene = 2;
+
     public Block(Board board, int x, int y, int height) : base(board, x, y)
     {
         this.height = height;
@@ -305,7 +308,7 @@ public class Board : MonoBehaviour
 
     public void CompleteLevel()
     {
-        Debug.Log("A winner is you!");
+        SceneManager.LoadScene(nextScene);
     }
 
     public bool InRange(int x, int y)
