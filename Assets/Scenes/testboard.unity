@@ -632,7 +632,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4825899308956048, guid: 1fd5df4895597b840b052af9027da140, type: 2}
       propertyPath: m_LocalPosition.y
-      value: 2.06
+      value: 1.718
       objectReference: {fileID: 0}
     - target: {fileID: 4825899308956048, guid: 1fd5df4895597b840b052af9027da140, type: 2}
       propertyPath: m_LocalPosition.z
@@ -826,7 +826,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4690418558508644, guid: 9431f8f2f51f1d44593fd7d7839a8de5, type: 2}
       propertyPath: m_LocalPosition.y
-      value: 0.90455467
+      value: 0.958
       objectReference: {fileID: 0}
     - target: {fileID: 4690418558508644, guid: 9431f8f2f51f1d44593fd7d7839a8de5, type: 2}
       propertyPath: m_LocalPosition.z
@@ -854,7 +854,17 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4690418558508644, guid: 9431f8f2f51f1d44593fd7d7839a8de5, type: 2}
       propertyPath: m_LocalScale.z
-      value: 2
+      value: 15
+      objectReference: {fileID: 0}
+    - target: {fileID: 23779535303193898, guid: 9431f8f2f51f1d44593fd7d7839a8de5,
+        type: 2}
+      propertyPath: m_ReceiveShadows
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 23779535303193898, guid: 9431f8f2f51f1d44593fd7d7839a8de5,
+        type: 2}
+      propertyPath: m_CastShadows
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 9431f8f2f51f1d44593fd7d7839a8de5, type: 2}
@@ -1032,7 +1042,8 @@ MeshRenderer:
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
-  m_Materials: []
+  m_Materials:
+  - {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -1084,7 +1095,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4825899308956048, guid: 1fd5df4895597b840b052af9027da140, type: 2}
       propertyPath: m_LocalPosition.y
-      value: 2.06
+      value: 1.718
       objectReference: {fileID: 0}
     - target: {fileID: 4825899308956048, guid: 1fd5df4895597b840b052af9027da140, type: 2}
       propertyPath: m_LocalPosition.z
@@ -1293,7 +1304,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4679837465889632, guid: 3730ea099b82e06418d6b926a2d62824, type: 2}
       propertyPath: m_LocalPosition.y
-      value: 1.1435547
+      value: 1.038
       objectReference: {fileID: 0}
     - target: {fileID: 4679837465889632, guid: 3730ea099b82e06418d6b926a2d62824, type: 2}
       propertyPath: m_LocalPosition.z
@@ -1349,7 +1360,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4580110868695490, guid: 385467f1c8fdde748b3ffc0f73b22d3e, type: 2}
       propertyPath: m_LocalPosition.z
-      value: 0
+      value: 1.211
       objectReference: {fileID: 0}
     - target: {fileID: 4580110868695490, guid: 385467f1c8fdde748b3ffc0f73b22d3e, type: 2}
       propertyPath: m_LocalRotation.x
@@ -1387,7 +1398,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4595598212827924, guid: 04ca31ecdedf57c4fa2971f189cd80e2, type: 2}
       propertyPath: m_LocalPosition.y
-      value: 0.01
+      value: -0.142
       objectReference: {fileID: 0}
     - target: {fileID: 4595598212827924, guid: 04ca31ecdedf57c4fa2971f189cd80e2, type: 2}
       propertyPath: m_LocalPosition.z
@@ -1429,18 +1440,13 @@ Prefab:
   m_Modification:
     m_TransformParent: {fileID: 457923888}
     m_Modifications:
-    - target: {fileID: 114050124175810348, guid: 2f86c2726731f09469a7532f8afe5a0c,
-        type: 2}
-      propertyPath: lights.Array.size
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 4585959561311544, guid: 2f86c2726731f09469a7532f8afe5a0c, type: 2}
       propertyPath: m_LocalPosition.x
       value: -1.2988008
       objectReference: {fileID: 0}
     - target: {fileID: 4585959561311544, guid: 2f86c2726731f09469a7532f8afe5a0c, type: 2}
       propertyPath: m_LocalPosition.y
-      value: 0.9035547
+      value: 0.721
       objectReference: {fileID: 0}
     - target: {fileID: 4585959561311544, guid: 2f86c2726731f09469a7532f8afe5a0c, type: 2}
       propertyPath: m_LocalPosition.z
@@ -1476,11 +1482,6 @@ Prefab:
       propertyPath: lights.Array.data[0]
       value: 
       objectReference: {fileID: 1946940306}
-    - target: {fileID: 23109223878404326, guid: 2f86c2726731f09469a7532f8afe5a0c,
-        type: 2}
-      propertyPath: m_Materials.Array.data[0]
-      value: 
-      objectReference: {fileID: 2100000, guid: 17e1f089553789c468369760a0b1863d, type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 2f86c2726731f09469a7532f8afe5a0c, type: 2}
   m_IsPrefabParent: 0

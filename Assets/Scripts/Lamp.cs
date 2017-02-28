@@ -9,7 +9,6 @@ public class lampRay : Ray
                                 Vector2.up + Vector2.left, Vector2.left, Vector2.left +
                                 Vector2.down, Vector2.down, Vector2.down +  Vector2.right};
     private int emmitedCount = 0;
-    private Vector2 next;
 
 
     public lampRay(Vector2 pos)
@@ -19,35 +18,16 @@ public class lampRay : Ray
 
     public bool hasNextLight()
     {
-        getNext();
-        return emmitedCount < dirs.Length && next.x >= 0; 
+        return emmitedCount < dirs.Length; 
     }
 
     public Vector2 nextLight()
     {
-        Vector2 prev = next;
-        next = new Vector2(-1, -1);
-        return prev;
+        Vector2 dir = dirs[emmitedCount++];
+        Vector2 rayLoc = new Vector2(pos.x, pos.y) + dir;
+        return rayLoc;
     }
 
-    private void getNext()
-    {
-        Vector2 dir = dirs[emmitedCount];
-        Vector2 rayLoc = new Vector2(pos.x, pos.y) + dir;
-        int height = Board.Instance.GetHeight((int)rayLoc.x, (int)rayLoc.y);
-        while (height > 0)
-        {
-            dir = dirs[++emmitedCount];
-            rayLoc = new Vector2(pos.x, pos.y) + dir;
-            height = Board.Instance.GetHeight((int)rayLoc.x, (int)rayLoc.y);
-            if (emmitedCount >= dirs.Length)
-            {
-                next = new Vector2(-1,-1);
-                return;
-            }
-        }
-        next = rayLoc;
-    }
 }
 
 
@@ -57,4 +37,12 @@ public class Lamp : LightSource
     {
         return new lampRay(new Vector2(x, y));
     }
+
+    public override void setPower(bool power)
+    {
+        base.setPower(power);
+        Light light = GetComponent<Light>();
+        light.enabled = power;
+    }
+
 }

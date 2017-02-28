@@ -17,7 +17,8 @@ public class SwitchScript : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		if (Input.GetKeyDown(KeyCode.RightShift) && kid.getX() == x && kid.getX() == y)
+
+        if (Input.GetKeyDown(KeyCode.RightShift) && kid.getX() == x && kid.getY() == y)
         {
             me.toggleLights();
         }
