@@ -49,7 +49,6 @@ public class Window : LightSource {
     {
         base.setPower(power);
         MeshRenderer mesh = GetComponent<MeshRenderer>();
-        Debug.LogFormat("Setting log to {0}", power);
         mesh.enabled = !power;
     }
 }

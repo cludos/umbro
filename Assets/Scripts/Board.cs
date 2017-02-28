@@ -28,7 +28,9 @@ public class Entity
 
 public class Exit : Entity
 {
-    public Exit(Board board, int x, int y) : base(board, x, y) { }
+    public Exit(Board board, int x, int y) : base(board, x, y) {
+        blocksBlocks = true;
+    }
 }
 
 public class Rug : Entity
