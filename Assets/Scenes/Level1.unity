@@ -1947,7 +1947,7 @@ Prefab:
         type: 2}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 2100000, guid: 5a05062a7de74411c962e13230e3c806, type: 2}
+      objectReference: {fileID: 2100000, guid: 516ade01e5977aa4aac16e0020bbd531, type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: ae84a5bd9ceae424397c19f3d9f86a38, type: 2}
   m_IsPrefabParent: 0
